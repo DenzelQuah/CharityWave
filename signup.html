@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CharityWave &mdash; Sign Up</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/snow.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/fundlogin.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<!-- //web font -->
+</head>
+<body>
+    <div class="top-buttons-agileinfo1">
+        <a href="signin.html">Sign In</a>
+        <a href="signup.html" class="active">Sign Up</a>
+    </div>
+
+<h1>Registration Form</h1>
+<div class="main-agileits">
+    <div class="form-w3-agile">
+        <h2 class="sub-agileits-w3layouts">Sign Up</h2>
+        <form action="signup.php" method="post">
+            <input type="text" name="Name" id="Name" placeholder="Name" required="" />
+            <input type="email" name="Email" id="Email" placeholder="Email" required="" />
+            <input type="password" name="Password" id="Password" placeholder="Password" required="" />
+            <input type="password" name="CPassword" id="CPassword" placeholder="Confirm Password" required="" />
+            <div class="submit-w3l">
+                <input type="submit" value="Sign up">
+            </div>
+            <p class="p-bottom-w3ls">Already have an account?<a href="signin.html"> Sign In</a></p>
+        </form>
+    </div>
+</div>
+
+<div class="top-buttons-agileinfo2">
+    <a href="index.html" class="active">Return</a>
+</div> 
+<script>
+let user = {
+  name: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+
+  // Method to validate name
+    validateName: function() {
+        if (this.name.trim() === "") {
+            alert("Please enter your name.");
+            return false;
+        }
+        return true;
+    },
+
+  // Method to validate email
+  validateEmail: function(){
+    let emailPattern = /\S+@\S+\.\S+/;
+    if (!emailPattern.test(this.email)){
+      alert("Please enter a valid email address.");
+      return false;
+    }
+    return true;
+  },
+
+  // Method to validate password
+  validatePassword: function(){
+    if(this.password.length < 6){
+      alert("Password must be at least 6 characters long.");
+      return false;
+    }
+    return true;
+  },
+
+  // Method to validate confirm password
+  validateConfirmPassword: function(){
+    console.log("Password:", this.password);
+    console.log("Confirm Password:", this.confirmPassword);
+
+    if(this.confirmPassword !== this.password){
+      alert("Passwords do not match.");
+      return false;
+    }
+    return true;
+  }
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("registrationForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get inputs from the form
+    user.name = document.getElementById("name").value;
+    user.email = document.getElementById("email").value;
+    user.password = document.getElementById("password").value;
+    user.confirmPassword = document.getElementById("confirmPassword").value;
+
+    // Validate inputs
+    let isValid = user.validateEmail() && user.validatePassword() && user.validateConfirmPassword();
+
+    if(isValid){
+      alert("Sign up successful!");
+
+      // Reset form fields
+      document.getElementById("registrationForm").reset();
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>
+</script>
+</body>
+</html>

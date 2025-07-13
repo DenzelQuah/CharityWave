@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt Details</title>
+    <link rel="stylesheet" href="viewReceipt.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="header">Receipt Details</h1>
+        
+        <div class="statistics">
+            <h2>Donation Statistics</h2>
+            <ul>
+                <li>Total Donations: RM <?php echo number_format($totalDonation, 2); ?></li>
+                <li>Average Donation: RM <?php echo number_format($averageDonation, 2); ?></li>
+                <li>Maximum Donation: RM <?php echo number_format($maxDonation, 2); ?></li>
+                <li>Minimum Donation: RM <?php echo number_format($minDonation, 2); ?></li>
+                <li>Number of Donations: <?php echo $countDonations; ?></li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <div class="receipts">
+            <?php
+            $connection = new mysqli($host, $user, $pass, $dbname);
+            $sql = "SELECT * FROM makepayment";
+            $result = $connection->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<div class='receipt'>";
+                    echo "<h2>Card Name: " . $row["cardName"] . "</h2>";
+                    echo "<div class='receipt-details'>";
+                    echo "<p><strong>Card Number:</strong> " . $row["cardNum"] . "</p>";
+                    echo "<p><strong>Expire Month:</strong> " . $row["expMonth"] . "</p>";
+                    echo "<p><strong>Expire Year:</strong> " . $row["expYear"] . "</p>";
+                    echo "<p><strong>CVV:</strong> " . $row["cvv"] . "</p>";
+                    echo "<p><strong>Donation Amount:</strong> RM " . $row["donationAmount"] . "</p>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+            } else {
+                echo "No results found";
+            }
+            $connection->close();
+            ?>
+        </div>
+
+    </div>
+
+</body>
+</html>

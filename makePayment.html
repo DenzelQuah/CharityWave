@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Payment Page</title>
+    <link rel="stylesheet" href="makePayment.css">
+</head>
+
+
+<body>
+    <style>
+        /* Internal CSS for demonstration purposes */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #555555;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            ul {
+                display: block;
+                text-align: center;
+            }
+
+            li {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="GetDonation.html">Beneficiaries</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+
+        <form action="insert_makepayment.php" method="post">
+
+            <div class="row">
+
+                <div class="col">
+
+                    <div class="donation-form">
+                        <h2 style="margin: 10px;">How much would you like to donate today?</h2>
+                        <p style="padding: 10px;">All donations directly impact our organization and help us further our
+                            mission.</p>
+
+                        <div class="donation-buttons">
+                            <button type="button" onclick="setAmount(10)">RM10.00</button>
+                            <button type="button" onclick="setAmount(25)">RM25.00</button>
+                            <button type="button" onclick="setAmount(50)">RM50.00</button>
+                            <button type="button" onclick="setAmount(100)">RM100.00</button>
+                            <button type="button" onclick="setAmount(250)">RM250.00</button>
+                            <button type="button" onclick="setCustomAmount()">Custom Amount</button>
+                            
+
+                        <div class="pay-buttons">
+                            <div class="selected-amount" id="selected-amount" style="font-size: 18px;">
+                                <input type="number" id="donationAmount" name="donationAmount" value="100.00" step="0.10"
+                                    style="margin: 10px;" oninput="updateAmount()">
+                                Selected Amount: RM<span id="display-amount">100.00</span>
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col">
+                    <h2 class="title" style="font-size: 30px;">Payment</h2>
+
+                    <div class="selected-amount" id="total-payment" style="font-size: 18px;">
+                        Total Payment: RM<span id="total-amount">100.00</span>
+                    </div>
+
+                    <div class="inputBox">
+                        <label for="cardName">Name On Card:</label>
+                        <input type="text" name="cardName" id="cardName" placeholder="Enter card name">
+                    </div>
+
+                    <div class="inputBox">
+                        <form id="payment" onsubmit="return validateCreditCard()">
+                        <label for="cardNum">Credit Card Number:</label>
+                        <input id="cardNum" name="cardNum" type="tel" inputmode="numeric" pattern="[0-9\s]{19,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required>
+                    </div>
+
+                    <div class="inputBox">
+                        <label for="expMonth">Expire Month:</label>
+                        <select id="expMonth" name="expMonth" required>
+                            <option value="">Choose month</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+
+                    <div class="flex">
+                        <div class="inputBox">
+                            <label for="expYear">Expire Year:</label>
+                            <select id="expYear" name="expYear" required>
+                                <option value="">Choose Year</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                            </select>
+                        </div>
+
+                        <div class="inputBox">
+                            <label for="cvv">CVV</label>
+                            <input id="cvv" placeholder="123" maxlength="3" name="cvv" required >
+
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+                <input type="submit" value="Proceed To Checkout" class="submit_btn">
+
+            </div>
+
+        </form>
+
+    </div>
+    <script type="text/javascript" src="makePayment.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    text-transform: uppercase;
+    background: #fff;
+    background-attachment: fixed;
+    background-size: cover;
+    background: url(../images/poor_5.jpg) no-repeat center center;
+    background-size: cover;
+    text-align: center;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+h2 {
+    color: #2e7d32; /* Dark green */
+    margin-bottom: 20px;
+}
+
+.form-box {
+    width: 100%;
+    margin: auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    color: #1b5e20; /* Darker green */
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="radio"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: space-around;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+.submit-btn {
+    background-color: #4caf50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+button {
+    margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+    }
+}
